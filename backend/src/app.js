@@ -3,7 +3,7 @@ const cors= require('cors');
 
 const app =  express();
 app.use(cors({
-    origin: 'http://localhost:5174'
+  origin: ['http://localhost:5174',"https://chat-bot-five-gilt.vercel.app/"]
 }));
 
 
