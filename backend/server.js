@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const app = require('./src/app');
 
+
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 
@@ -9,7 +10,12 @@ const { generateResponse } = require('./src/service/ai.service');
 
 const httpServer = createServer(app);
 
-const io = new Server(httpServer, {});
+const io = new Server(httpServer, {
+    cors: {
+        origin: process.env.CLIENT_URL || ['http://localhost:5173', 'http://localhost:5174'],
+        methods: ['GET', 'POST']
+    }
+});
 
 // Chat history
 const chatHistory = [];
